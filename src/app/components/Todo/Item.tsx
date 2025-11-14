@@ -83,6 +83,7 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo }: TodoItemProps
           <Button 
             variant="outline" 
             size="sm"
+            onClick={() => deleteTodo(todo.id)}
             className="ml-4 hover:bg-red-50 hover:border-red-200 transition-all duration-200"
           >
             <TrashIcon className="h-4 w-4 text-red-500 hover:text-red-600" />
