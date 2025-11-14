@@ -1,0 +1,52 @@
+// react
+import { useState } from 'react'
+
+// shadcn-ui
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+// types
+interface FiltersProps {
+  categories: string[]
+  setFilter: (filter: string) => void
+}
+
+export default function Filters({ categories, setFilter }: FiltersProps) {
+  // states
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>()
+
+  // handle select change and set filter state to selected category
+  const handleSelect = (category: string) => {
+    setSelectedCategory(category)
+    setFilter(category)
+  }
+
+  return (
+    <div>
+      <h3 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+        <span className="mr-2">🔍</span>
+        Filter Tasks
+      </h3>
+      <Select value={selectedCategory} onValueChange={handleSelect}>
+        <SelectTrigger className="w-full py-4 border-lime-200 focus:border-lime-400 focus:ring-lime-400/20">
+          <SelectValue placeholder="🎯 Filter by category" />
+        </SelectTrigger>
+        <SelectContent>
+          {categories.filter(Boolean).map((category) => (
+            <SelectItem 
+              key={category} 
+              value={category.toLowerCase()} 
+              className="lowercase hover:bg-lime-50 focus:bg-lime-50"
+            >
+              {category.toLowerCase() === 'all' ? '📋 All Tasks' : 
+               category.toLowerCase() === 'work' ? '💼 Work' :
+               category.toLowerCase() === 'personal' ? '🏠 Personal' :
+               category.toLowerCase() === 'travel' ? '✈️ Travel' :
+               category.toLowerCase() === 'shopping' ? '🛒 Shopping' :
+               category.toLowerCase()}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  )
+}
