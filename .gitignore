@@ -35,5 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#coda
+# coda
 .coda
+
+# secrets
+secrets.md
