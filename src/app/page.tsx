@@ -17,7 +17,7 @@ export default function Home() {
         </div>
       </header>
       
-      <div className="relative z-10 flex flex-col items-center px-6 pb-20">
+      <div className="relative z-10 flex flex-col items-center px-6 pb-48">
         <TodoList />
       </div>
       
